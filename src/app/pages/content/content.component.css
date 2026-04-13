@@ -25,5 +25,31 @@
 
 .content__description > p{
   margin-top: 20px;
-  color: rgb(198, 197, 197);
+  color: var(--muted, rgb(198, 197, 197));
+}
+
+.content__meta {
+  font-size: 0.9rem;
+  color: var(--muted, rgb(198, 197, 197));
+  margin-top: 0.5rem;
+}
+
+.content__lead {
+  font-weight: 600;
+}
+
+.content__body {
+  white-space: pre-wrap;
+}
+
+.content-state {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 1rem;
+}
+
+.content-state a {
+  display: inline-block;
+  margin-top: 1rem;
+  font-weight: 600;
 }

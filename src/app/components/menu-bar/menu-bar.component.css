@@ -1,12 +1,35 @@
-
-
-.container__menu-bar > ul{
+.container__menu-bar > ul {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0;
 }
 
-.container__menu-bar > ul > li{
+.container__menu-bar > ul > li {
   margin-right: 20px;
   list-style: none;
 }
 
+.menu-link--active {
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.theme-toggle {
+  cursor: pointer;
+  border: 1px solid var(--border, rgb(144, 144, 144));
+  border-radius: 4px;
+  padding: 0.35rem 0.65rem;
+  background: var(--input-bg, #1a1a1a);
+  color: inherit;
+  font: inherit;
+}
+
+body.theme-light .theme-toggle {
+  background: #fff;
+}
+
+.menu-sep {
+  opacity: 0.6;
+}

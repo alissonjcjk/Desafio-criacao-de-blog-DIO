@@ -1,9 +1,54 @@
 <div class="container__menu-bar">
   <ul>
-    <li><a href="https://www.linkedin.com/in/flora-martins-299631a3/">Linkedin</a></li>
-    <li><span>•</span></li>
-    <li><a href="https://github.com/codefloracode">Github</a></li>
-    <li><span>•</span></li>
-    <li><a href="https://www.instagram.com/hiimf/">Instagram</a></li>
+    <li>
+      <a
+        routerLink="/"
+        routerLinkActive="menu-link--active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >Início</a>
+    </li>
+    <li><span class="menu-sep" aria-hidden="true">•</span></li>
+    <li>
+      <a routerLink="/sobre" routerLinkActive="menu-link--active">Sobre</a>
+    </li>
+    <li><span class="menu-sep" aria-hidden="true">•</span></li>
+    <li>
+      <a
+        href="https://www.linkedin.com/in/alisson-da-silva-bernadino-6535b3318/"
+        target="_blank"
+        rel="noopener noreferrer"
+        >LinkedIn</a>
+    </li>
+    <li><span class="menu-sep" aria-hidden="true">•</span></li>
+    <li>
+      <a
+        href="https://github.com/alissonjcjk"
+        target="_blank"
+        rel="noopener noreferrer"
+        >GitHub</a>
+    </li>
+    <li><span class="menu-sep" aria-hidden="true">•</span></li>
+    <li>
+      <a
+        href="https://www.instagram.com/alisson.bernadink/"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Instagram</a>
+    </li>
+    <li><span class="menu-sep" aria-hidden="true">•</span></li>
+    <li>
+      <button
+        type="button"
+        class="theme-toggle"
+        (click)="toggleTheme()"
+        [attr.aria-label]="
+          (theme.isDark$ | async)
+            ? 'Ativar tema claro'
+            : 'Ativar tema escuro'
+        "
+      >
+        {{ (theme.isDark$ | async) ? "Modo claro" : "Modo escuro" }}
+      </button>
+    </li>
   </ul>
 </div>

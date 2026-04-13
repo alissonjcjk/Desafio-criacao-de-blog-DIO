@@ -1,0 +1,43 @@
+[
+  {
+    "id": "1",
+    "title": "Deadpool & Wolverine",
+    "description": "O multiverso da Marvel muda para sempre com o encontro mais esperado do ano.",
+    "body": "Após anos de espera, Deadpool e Wolverine unem forças em uma missão que atravessa realidades. O filme não só integra oficialmente os mutantes ao MCU, como também se tornou um fenômeno de bilheteria, trazendo de volta personagens icônicos e estabelecendo as bases para o futuro da Saga do Multiverso.",
+    "photoCover": "https://d2d7ho1ae66ldi.cloudfront.net/ArquivoNoticias/33105769-0896-11ef-aa78-d602bea5d5c0/chrome_2024-05-02_12-05-45.jpg",
+    "category": "Cinema",
+    "publishedAt": "2024-07-25",
+    "tags": ["Marvel", "Deadpool", "Wolverine", "MCU"],
+    "featured": true
+  },
+  {
+    "id": "2",
+    "title": "Capitão América: Admirável Mundo Novo",
+    "description": "Sam Wilson assume o manto em um thriller de conspiração internacional.",
+    "body": "Sam Wilson precisa navegar por uma teia de intrigas políticas enquanto assume o escudo de forma definitiva. Com a introdução do Presidente Thaddeus Ross (Harrison Ford) e o retorno do Líder, o filme foca em um tom mais realista de espionagem, questionando o papel do herói em um mundo moderno e dividido.",
+    "photoCover": "https://sm.ign.com/ign_pt/screenshot/default/gsam_831e.jpg",
+    "category": "Cinema",
+    "publishedAt": "2025-02-13",
+    "tags": ["Marvel", "Capitão América", "Sam Wilson", "Cinema"]
+  },
+  {
+    "id": "3",
+    "title": "Thunderbolts*",
+    "description": "A equipe de anti-heróis da Marvel é convocada para uma missão suicida.",
+    "body": "Yelena Belova, Bucky Barnes e o Guardião Vermelho lideram este grupo de desajustados e ex-vilões. Diferente dos Vingadores, os Thunderbolts operam nas sombras e sob ordens questionáveis, trazendo uma nova dinâmica de grupo ao MCU, onde a confiança é um recurso escasso e a redenção é o objetivo principal.",
+    "photoCover": "https://cinebuzz.com.br/wp-content/uploads/2025/04/o-que-acontece-nas-cenas-pos-creditos-de-thunderbolts-da-marvel.jpg",
+    "category": "Cinema",
+    "publishedAt": "2025-05-02",
+    "tags": ["Marvel", "Thunderbolts", "Anti-Heróis", "MCU"]
+  },
+  {
+    "id": "4",
+    "title": "Agatha Desde Sempre",
+    "description": "O retorno da bruxa de Westview em uma jornada pelo Caminho das Bruxas.",
+    "body": "Após os eventos de WandaVision, Agatha Harkness busca recuperar seus poderes perdidos. A série mergulha no lado místico e sobrenatural da Marvel, apresentando um novo coven e explorando a mitologia das bruxas no MCU, misturando terror, comédia e números musicais surpreendentes no Disney+.",
+    "photoCover": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjrOPTfCzisZGGrryKvqOZZvI1aFV59xUwTw&s",
+    "category": "Streaming",
+    "publishedAt": "2024-09-18",
+    "tags": ["Marvel", "Disney+", "Agatha Harkness", "Séries"]
+  }
+]

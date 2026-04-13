@@ -1,15 +1,31 @@
-<div class="container__content">
+<div *ngIf="loading" class="content-state" role="status">Carregando artigo…</div>
+
+<div *ngIf="!loading && notFound" class="content-state">
+  <p>Artigo não encontrado.</p>
+  <a routerLink="/">Voltar ao início</a>
+</div>
+
+<div class="container__content" *ngIf="!loading && article">
   <div class="content__cover">
-    <img src="{{ photoCover }}" alt="" srcset="">
+    <img
+      [src]="article.photoCover"
+      [attr.alt]="'Capa do artigo: ' + article.title"
+      width="500"
+      height="300"
+    />
   </div>
   <div class="content__title">
-    <h1>{{ contentTitle }}</h1>
+    <h1>{{ article.title }}</h1>
+    <p class="content__meta">
+      <span>{{ article.category }}</span>
+      <span aria-hidden="true"> · </span>
+      <time [attr.datetime]="article.publishedAt">{{ article.publishedAt }}</time>
+    </p>
     <hr />
   </div>
   <div class="content__description">
-    <a [routerLink]="['']"> << VOLTAR </a>
-    <p>
-      {{ contentDescription }}
-    </p>
+    <a routerLink="/">« Voltar</a>
+    <p class="content__lead">{{ article.description }}</p>
+    <p class="content__body">{{ article.body }}</p>
   </div>
 </div>

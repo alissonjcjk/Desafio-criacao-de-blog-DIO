@@ -1,14 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
-*{
-  margin:0;
-  padding:0;
+
+/* Tema: classes aplicadas no body pelo ThemeService (persistência em localStorage). */
+body.theme-dark {
+  --surface: #111111;
+  --text: #ffffff;
+  --muted: rgb(198, 197, 197);
+  --border: rgb(144, 144, 144);
+  --input-bg: #1a1a1a;
+}
+
+body.theme-light {
+  --surface: #f2f2f2;
+  --text: #1a1a1a;
+  --muted: #555;
+  --border: #bbb;
+  --input-bg: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
-  background-color: #111111;
-  color:white;
   font-family: 'Open Sans', sans-serif;
 }
 
-a{
+body {
+  background-color: var(--surface);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+a {
   text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: underline;
 }

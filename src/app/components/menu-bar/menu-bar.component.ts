@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-menu-bar',
   templateUrl: './menu-bar.component.html',
   styleUrls: ['./menu-bar.component.css']
 })
-export class MenuBarComponent implements OnInit {
+export class MenuBarComponent {
+  constructor(public theme: ThemeService) {}
 
-  constructor() { }
-
-  ngOnInit(): void {
+  toggleTheme(): void {
+    this.theme.toggle();
   }
-
 }

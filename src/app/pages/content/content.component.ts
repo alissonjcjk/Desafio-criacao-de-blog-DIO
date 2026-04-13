@@ -1,36 +1,67 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-import {dataFake} from '../../data/dataFake'
+import { Subject, of } from 'rxjs';
+import { switchMap, takeUntil, tap } from 'rxjs/operators';
+import { Article } from '../../models/article';
+import { ArticleService } from '../../services/article.service';
 
+/**
+ * Página de leitura: combina rota (param :id) com dados do ArticleService.
+ * switchMap cancela requisições anteriores se o usuário navegar rápido entre posts.
+ */
 @Component({
   selector: 'app-content',
   templateUrl: './content.component.html',
   styleUrls: ['./content.component.css']
 })
-export class ContentComponent implements OnInit {
-  photoCover:string = ""
-  contentTitle:string = ""
-  contentDescription:string = ""
-  private id:string | null = "0"
+export class ContentComponent implements OnInit, OnDestroy {
+  article: Article | undefined;
+  notFound = false;
+  loading = true;
+
+  private readonly destroy$ = new Subject<void>();
 
   constructor(
-    private route:ActivatedRoute
-  ) { }
+    private route: ActivatedRoute,
+    private articleService: ArticleService,
+    private title: Title,
+    private meta: Meta
+  ) {}
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe( value =>
-     this.id = value.get("id")
-    )
-
-    this.setValuesToComponent(this.id)
+    this.route.paramMap
+      .pipe(
+        switchMap(params => {
+          this.loading = true;
+          const id = params.get('id');
+          if (!id) {
+            return of(undefined);
+          }
+          return this.articleService.getById(id);
+        }),
+        tap(article => {
+          this.loading = false;
+          this.article = article;
+          this.notFound = !article;
+          if (article) {
+            this.title.setTitle(`${article.title} | Angular Blog`);
+            this.meta.updateTag({ name: 'description', content: article.description });
+          } else {
+            this.title.setTitle('Artigo não encontrado | Angular Blog');
+            this.meta.updateTag({
+              name: 'description',
+              content: 'O artigo solicitado não foi encontrado.'
+            });
+          }
+        }),
+        takeUntil(this.destroy$)
+      )
+      .subscribe();
   }
 
-  setValuesToComponent(id:string | null){
-    const result = dataFake.filter(article => article.id == id)[0]
-
-    this.contentTitle = result.title
-    this.contentDescription = result.description
-    this.photoCover = result.photoCover
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
-
 }

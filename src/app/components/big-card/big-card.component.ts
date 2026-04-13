@@ -16,6 +16,10 @@ export class BigCardComponent implements OnInit {
   @Input()
   Id:string="0"
 
+  /** Texto alternativo da imagem (a11y); se vazio, usa o título do card. */
+  @Input()
+  imageAlt = ""
+
   constructor() { }
 
   ngOnInit(): void {
