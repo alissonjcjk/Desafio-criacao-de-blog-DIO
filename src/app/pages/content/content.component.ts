@@ -7,8 +7,8 @@ import { Article } from '../../models/article';
 import { ArticleService } from '../../services/article.service';
 
 /**
- * Página de leitura: combina rota (param :id) com dados do ArticleService.
- * switchMap cancela requisições anteriores se o usuário navegar rápido entre posts.
+ * Eu aprendi que o parâmetro da rota vem como Observable: não posso confiar só no primeiro tick.
+ * switchMap cancela a busca anterior se eu clicar rápido de um post para outro.
  */
 @Component({
   selector: 'app-content',
@@ -20,6 +20,7 @@ export class ContentComponent implements OnInit, OnDestroy {
   notFound = false;
   loading = true;
 
+  /** Eu uso takeUntil para encerrar a inscrição quando saio da página (evita vazamento de memória). */
   private readonly destroy$ = new Subject<void>();
 
   constructor(

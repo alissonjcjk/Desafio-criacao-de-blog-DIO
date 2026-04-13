@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
 
-/* Tema: classes aplicadas no body pelo ThemeService (persistência em localStorage). */
+/* Eu troco só variáveis CSS conforme theme-dark / theme-light no body — sem duplicar folhas inteiras. */
 body.theme-dark {
   --surface: #111111;
   --text: #ffffff;

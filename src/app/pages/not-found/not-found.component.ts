@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 
+/**
+ * Exibido pela rota `**` — eu preferi uma página explícita a deixar o usuário perdido.
+ */
 @Component({
   selector: 'app-not-found',
   templateUrl: './not-found.component.html',

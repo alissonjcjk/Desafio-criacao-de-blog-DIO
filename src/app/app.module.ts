@@ -14,6 +14,10 @@ import { ContentComponent } from './pages/content/content.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 
+/**
+ * Eu registrei aqui tudo que a app precisa de uma vez:
+ * HttpClientModule para o JSON, FormsModule para ngModel na busca/filtro da home.
+ */
 @NgModule({
   declarations: [
     AppComponent,

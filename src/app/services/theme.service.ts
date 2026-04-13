@@ -4,14 +4,13 @@ import { BehaviorSubject } from 'rxjs';
 const STORAGE_KEY = 'angular-blog-theme';
 
 /**
- * Alternância claro/escuro com persistência em localStorage.
- * Aplica classes no body para o CSS global reagir via variáveis.
+ * Eu quis um tema persistente sem biblioteca externa: BehaviorSubject emite o valor atual
+ * e o menu usa async pipe; as cores ficam em variáveis CSS no body.
  */
 @Injectable({
   providedIn: 'root'
 })
 export class ThemeService {
-  /** true = tema escuro (padrão alinhado ao visual original do projeto). */
   readonly isDark$ = new BehaviorSubject<boolean>(this.readStored());
 
   init(): void {
@@ -24,7 +23,7 @@ export class ThemeService {
     try {
       localStorage.setItem(STORAGE_KEY, next ? 'dark' : 'light');
     } catch {
-      /* ignore */
+      /* modo privado / storage indisponível */
     }
     this.apply(next);
   }

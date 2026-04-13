@@ -5,9 +5,8 @@ import { catchError, map, shareReplay } from 'rxjs/operators';
 import { Article } from '../models/article';
 
 /**
- * Camada de acesso aos posts.
- * Injeta HttpClient (fornecido pelo HttpClientModule) e expõe Observables,
- * alinhado ao modelo reativo do Angular (idealmente com async pipe no template).
+ * Eu concentrei todo o acesso aos posts aqui em vez de importar JSON nos componentes.
+ * Aprendi que `providedIn: 'root'` registra o serviço uma vez e o Angular injeta onde preciso.
  */
 @Injectable({
   providedIn: 'root'
@@ -16,8 +15,8 @@ export class ArticleService {
   private static readonly URL = 'assets/articles.json';
 
   /**
-   * shareReplay(1) mantém a última lista em memória: vários componentes
-   * podem chamar getAll()/getById() sem disparar novo HTTP.
+   * Eu usei shareReplay(1) porque percebi que home e content pediam os mesmos dados:
+   * sem isso eu dispararia várias requisições iguais ao assets/articles.json.
    */
   private cached$: Observable<Article[]> | null = null;
 
@@ -32,6 +31,7 @@ export class ArticleService {
       this.cached$ = this.http.get<Article[]>(ArticleService.URL).pipe(
         catchError(err => {
           console.error('Falha ao carregar artigos', err);
+          // Eu retorno array vazio para a UI não quebrar se o JSON falhar (rede, 404, etc.).
           return of([]);
         }),
         shareReplay(1)
@@ -40,14 +40,14 @@ export class ArticleService {
     return this.cached$;
   }
 
-  /** Artigo por id ou undefined se não existir (após o JSON carregar). */
+  /** Busco por id depois que a lista já está em memória (derivado do mesmo Observable). */
   getById(id: string): Observable<Article | undefined> {
     return this.articles$().pipe(
       map(articles => articles.find(a => a.id === id))
     );
   }
 
-  /** Primeiro com featured === true, ou o primeiro da lista. */
+  /** Eu priorizo `featured: true` no JSON; se não houver, mostro o primeiro post. */
   getFeatured(): Observable<Article | undefined> {
     return this.articles$().pipe(
       map(articles => {

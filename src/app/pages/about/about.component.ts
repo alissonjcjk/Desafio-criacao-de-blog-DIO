@@ -12,6 +12,9 @@ export class AboutComponent implements OnInit {
     private meta: Meta
   ) {}
 
+  /**
+   * Eu atualizo Title/Meta aqui também: cada rota "importante" merece título único no navegador.
+   */
   ngOnInit(): void {
     this.title.setTitle('Sobre | Angular Blog');
     this.meta.updateTag({

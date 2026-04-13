@@ -11,6 +11,9 @@ export class AppComponent implements OnInit {
 
   constructor(private theme: ThemeService) {}
 
+  /**
+   * Eu chamo init() na subida da app para reaplicar o tema salvo antes do primeiro paint perceptível.
+   */
   ngOnInit(): void {
     this.theme.init();
   }

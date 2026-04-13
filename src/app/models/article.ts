@@ -1,7 +1,7 @@
 /**
- * Contrato de um post do blog.
- * Centralizar tipos assim ajuda o TypeScript a validar templates e serviços
- * e documenta o formato dos dados (similar a um DTO em APIs reais).
+ * Eu defini esta interface para ter um "contrato" único do que é um post.
+ * Assim o TypeScript me avisa se eu errar um campo no JSON ou no template,
+ * e fica parecido com o que vi sobre DTOs / modelos em APIs reais.
  */
 export interface Article {
   id: string;
@@ -15,6 +15,6 @@ export interface Article {
   /** Data ISO 8601 (ex.: 2024-03-15) para ordenação ou exibição. */
   publishedAt: string;
   tags?: string[];
-  /** Se true, aparece como destaque no big card (senão usa o primeiro da lista). */
+  /** Se true, aparece como destaque no big card (senão uso o primeiro da lista). */
   featured?: boolean;
 }

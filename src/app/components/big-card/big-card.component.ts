@@ -1,5 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+/**
+ * Componente "burro": só exibe o que o pai passa via @Input().
+ * Eu aprendi que isso facilita reutilizar o mesmo card em outros layouts.
+ */
 @Component({
   selector: 'app-big-card',
   templateUrl: './big-card.component.html',
@@ -16,7 +20,7 @@ export class BigCardComponent implements OnInit {
   @Input()
   Id:string="0"
 
-  /** Texto alternativo da imagem (a11y); se vazio, usa o título do card. */
+  /** Eu adicionei isso para acessibilidade: leitores de tela precisam de alt descritivo. */
   @Input()
   imageAlt = ""
 

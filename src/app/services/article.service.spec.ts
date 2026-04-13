@@ -4,8 +4,8 @@ import { Article } from '../models/article';
 import { ArticleService } from './article.service';
 
 /**
- * Testes com HttpClient mockado: após um único flush do JSON,
- * shareReplay evita novas requisições — aqui validamos lista, id e destaque.
+ * Eu escrevi este spec para provar que entendo HttpClient em testes:
+ * expectOne + flush simulam a resposta sem rede real.
  */
 describe('ArticleService', () => {
   let service: ArticleService;
@@ -42,7 +42,7 @@ describe('ArticleService', () => {
   });
 
   afterEach(() => {
-    httpMock.verify();
+    httpMock.verify(); // garante que não ficou requisição pendente sem teste
   });
 
   it('deve carregar a lista, resolver getById e getFeatured após o HTTP', () => {
